@@ -1,4 +1,5 @@
 from time import localtime, strftime
+from os import path
 
 
 class Logger:
@@ -11,6 +12,10 @@ class Logger:
         cls.__log(f'{datetime} - {class_information} - {message}\n')
 
     @classmethod
+    def error(cls, error):
+        cls.__log(f'ERROR::: {error}')
+
+    @classmethod
     def banner(cls, banner_path):
         with open(banner_path, 'r') as banner:
             cls.__log(f'{banner.read()}\n')
@@ -18,7 +23,8 @@ class Logger:
     @classmethod
     def __log(cls, message):
         current_date = strftime("%d-%m-%Y_%H-%M", localtime())
-        log_file_path = f'./logs/log-{current_date}.txt'
+        log_filename = f'log-{current_date}.txt'
+        log_file_path = path.join('.', 'logs', log_filename)
         with open(log_file_path, 'a') as log_file:
             log_file.write(message)
             if cls.debug:
