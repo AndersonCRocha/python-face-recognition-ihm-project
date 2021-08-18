@@ -1,9 +1,10 @@
-from time import localtime, strftime
 from os import path
+from time import localtime, strftime
 
 
 class Logger:
     debug = False
+    filename = 'log.txt'
 
     @classmethod
     def info(cls, clazz, message):
@@ -22,9 +23,7 @@ class Logger:
 
     @classmethod
     def __log(cls, message):
-        current_date = strftime("%d-%m-%Y_%H-%M", localtime())
-        log_filename = f'log-{current_date}.txt'
-        log_file_path = path.join('.', 'logs', log_filename)
+        log_file_path = path.join('.', 'logs', cls.filename)
         with open(log_file_path, 'a') as log_file:
             log_file.write(message)
             if cls.debug:
