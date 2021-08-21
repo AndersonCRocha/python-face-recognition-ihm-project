@@ -94,8 +94,13 @@ def get_encoded_photo_by_name(filename):
 
 def get_random_encoded_photo_not_in(people):
     random_photo = None
+    people_photos = []
 
-    people_photos = map(lambda person: person['photos'], people)
+    for person in people:
+        for photo in person['photos']:
+            people_photos.append(photo)
+
+    print('All photos: ', people_photos)
 
     while not random_photo:
         photo = random.choice(PEOPLE)

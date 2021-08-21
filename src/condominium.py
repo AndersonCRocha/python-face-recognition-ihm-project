@@ -2,7 +2,7 @@ import json
 
 import face_recognition
 
-from src.constants import CONFIDENCE_LEVEL, SETTINGS_FILE_PATH, TIME_BETWEEN_PEOPLE_ARRIVAL, TIME_BETWEEN_PEOPLE_LEAVING
+from src.constants import CONFIDENCE_LEVEL, SETTINGS_FILE_PATH, TIME_BETWEEN_PROCESSES_EXECUTION
 from src.logger import Logger
 from src.utils import get_random_encoded_photo_not_in, get_encoded_photo_by_name
 
@@ -29,7 +29,7 @@ class Condominium:
         self.__environment.add_process('classify_list()', self.__classify_recognized_people())
         self.__environment.add_process('unlock_to_tenants()', self.__unlock_to_tenants())
         self.__environment.add_process('unlock_to_visitors()', self.__unlock_to_visitors())
-        self.__environment.add_process('unlock_to_visitors()', self.__people_leaves())
+        self.__environment.add_process('people_leaves()', self.__people_leaves())
 
     def __recognize_people(self):
         while True:
@@ -54,27 +54,27 @@ class Condominium:
 
                     self.__recognized_people.append(tenant)
 
-            yield self.__environment.timeout(TIME_BETWEEN_PEOPLE_ARRIVAL)
+            yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __classify_recognized_people(self):
         while True:
             print('__classify_list')
-            yield self.__environment.timeout(20)
+            yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __unlock_to_tenants(self):
         while True:
             print('__unlock_to_tenants')
-            yield self.__environment.timeout(30)
+            yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __unlock_to_visitors(self):
         while True:
             print('__unlock_to_visitors')
-            yield self.__environment.timeout(5)
+            yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __people_leaves(self):
         while True:
             print('__people_leaves')
-            yield self.__environment.timeout(TIME_BETWEEN_PEOPLE_LEAVING)
+            yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __unlock_door(self):
         pass
