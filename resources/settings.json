@@ -16,8 +16,7 @@
           "name": "Paul",
           "photos": [
             "paul-01.jpg",
-            "paul-02.jpg",
-            "paul-03.jpg"
+            "paul-02.jpg"
           ]
         },
         {
@@ -53,7 +52,7 @@
           "id": 7,
           "name": "Jane",
           "photos": [
-            "jane-01.jpg",
+            "jane-01.jfif",
             "jane-02.jpg",
             "jane-03.jpg"
           ]
@@ -62,7 +61,7 @@
           "id": 8,
           "name": "Matheo",
           "photos": [
-            "matheo-01.jpg",
+            "matheo-01.jfif",
             "matheo-02.jpg",
             "matheo-03.jpg"
           ]

@@ -92,19 +92,6 @@ def get_encoded_photo_by_name(filename):
     return face_recognition.face_encodings(photo)[0]
 
 
-def get_random_encoded_photo_not_in(people):
-    random_photo = None
-    people_photos = []
-
-    for person in people:
-        for photo in person['photos']:
-            people_photos.append(photo)
-
-    print('All photos: ', people_photos)
-
-    while not random_photo:
-        photo = random.choice(PEOPLE)
-        if photo not in people_photos:
-            random_photo = photo
-
+def get_random_encoded_photo():
+    random_photo = random.choice(PEOPLE)
     return get_encoded_photo_by_name(random_photo)
