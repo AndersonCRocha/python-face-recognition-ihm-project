@@ -16,4 +16,4 @@ class Environment:
 
     def run(self):
         Logger.info(self, "Starting all processes.")
-        self.env.run(until=1000)
+        self.env.run(until=500)
