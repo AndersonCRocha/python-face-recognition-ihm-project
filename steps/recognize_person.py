@@ -30,6 +30,4 @@ def then_person_should_be_recognized(context):
 def then_person_should__not_be_recognized(context):
     encoded_photo = get_encoded_photo_by_name(context.person_photo)
     person = context.condominium.recognize_person(encoded_photo)
-    print(context.person_photo)
-    print(person)
     assert person is None
