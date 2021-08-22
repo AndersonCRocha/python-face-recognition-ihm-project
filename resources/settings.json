@@ -40,30 +40,12 @@
       ],
       "visitors": [
         {
-          "id": 6,
-          "name": "Phillip",
-          "photos": [
-            "phillip-01.jpeg",
-            "phillip-02.jpeg",
-            "phillip-03.jpeg"
-          ]
-        },
-        {
           "id": 7,
           "name": "Jane",
           "photos": [
             "jane-01.jfif",
             "jane-02.jpg",
             "jane-03.jpg"
-          ]
-        },
-        {
-          "id": 8,
-          "name": "Matheo",
-          "photos": [
-            "matheo-01.jfif",
-            "matheo-02.jpg",
-            "matheo-03.jpg"
           ]
         }
       ]
@@ -76,17 +58,7 @@
         "joseph-02.jpg",
         "joseph-03.jpg"
       ],
-      "visitors": [
-        {
-          "id": 9,
-          "name": "Claire",
-          "photos": [
-            "claire-01.jpg",
-            "claire-02.jpg",
-            "claire-03.jpg"
-          ]
-        }
-      ]
+      "visitors": []
     }
   ]
 }

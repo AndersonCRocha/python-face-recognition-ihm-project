@@ -22,6 +22,12 @@ class Condominium:
         self.__tenants_in = []
         self.__visitors_in = []
 
+    def get_settings(self):
+        return self.__settings
+
+    def get_recognized_people(self):
+        return self.__recognized_people
+
     def __load_settings(self):
         Logger.info(self, f'Reading settings file in: {SETTINGS_FILE_PATH}.')
         with open(SETTINGS_FILE_PATH, 'r') as settings_file:
@@ -29,43 +35,53 @@ class Condominium:
             Logger.info(self, f'Settings: {json.dumps(self.__settings, indent=2)}')
 
     def __prepare_environment(self):
-        self.__environment.add_process('recognize_people()', self.__recognize_people())
+        self.__environment.add_process('recognize_person()', self.__recognize_person_process())
         self.__environment.add_process('classify_list()', self.__classify_recognized_people())
         self.__environment.add_process('unlock_to_tenants()', self.__unlock_to_tenants())
         self.__environment.add_process('unlock_to_visitors()', self.__unlock_to_visitors())
         self.__environment.add_process('people_leaves()', self.__people_leaves())
 
-    def __recognize_people(self):
+    def recognize_person(self, encoded_photo=None):
+        people = self.__get_all_registered_people()
+        random_encoded_photo = encoded_photo if encoded_photo is not None else get_random_encoded_photo()
+        number_of_recognized_photos = 0
+
+        recognized_person = None
+
+        for person in people:
+            person_photos = person['photos']
+
+            for photo in person_photos:
+                person_encoded_photo = get_encoded_photo_by_name(photo)
+
+                recognized = face_recognition.compare_faces([random_encoded_photo], person_encoded_photo)[0]
+                if recognized:
+                    number_of_recognized_photos += 1
+
+            recognition_confidence = (number_of_recognized_photos / len(person_photos)) > CONFIDENCE_LEVEL
+
+            if recognition_confidence > CONFIDENCE_LEVEL:
+                recognized_person = person
+                break
+
+        return recognized_person
+
+    def __recognize_person_process(self):
         while True:
-            people = self.__get_all_registered_people()
-            random_encoded_photo = get_random_encoded_photo()
-            number_of_recognized_photos = 0
+            person = self.recognize_person()
 
-            for person in people:
-                person_photos = person['photos']
+            if person not in self.__waiting_tenants \
+                    and person not in self.__waiting_visitors\
+                    and person not in self.__tenants_in \
+                    and person not in self.__visitors_in:
+                Logger.info(self, f'One person was recognized: {person["name"]}')
+                self.__recognized_people.append(person)
 
-                for photo in person_photos:
-                    person_encoded_photo = get_encoded_photo_by_name(photo)
+                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION * 2)
+            else:
+                Logger.info(self, 'Person not registered in allowed people list')
 
-                    recognized = face_recognition.compare_faces([random_encoded_photo], person_encoded_photo)
-                    if recognized:
-                        number_of_recognized_photos += 1
-
-                recognition_confidence = (number_of_recognized_photos / len(person_photos)) > CONFIDENCE_LEVEL
-
-                if recognition_confidence > CONFIDENCE_LEVEL \
-                        and person not in self.__waiting_tenants \
-                        and person not in self.__waiting_visitors\
-                        and person not in self.__tenants_in \
-                        and person not in self.__visitors_in:
-                    Logger.info(self, f'One person was recognized: {person["name"]}')
-                    self.__recognized_people.append(person)
-
-                    yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION * 2)
-                else:
-                    Logger.info(self, 'Person not registered in allowed people list')
-
-                    yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
+                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __classify_recognized_people(self):
         all_registered_tenants = self.__get_all_registered_people(include_visitors=False)
