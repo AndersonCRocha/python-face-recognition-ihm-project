@@ -47,7 +47,7 @@ class Condominium:
                 for photo in person_photos:
                     person_encoded_photo = get_encoded_photo_by_name(photo)
 
-                    recognized = face_recognition.compare_faces([random_encoded_photo], person_encoded_photo)
+                    recognized = face_recognition.compare_faces([random_encoded_photo], person_encoded_photo)[0]
                     if recognized:
                         number_of_recognized_photos += 1
 
@@ -136,11 +136,11 @@ class Condominium:
                     self.__visitors_in.remove(random_visitor)
                     Logger.info(self, f'Visitor "{random_visitor["name"]}" is leaving the condominium: ')
                 elif len(self.__tenants_in) > 0:
-                    random_tenant = random.choice(self.__visitors_in)
-                    self.__visitors_in.remove(random_tenant)
+                    random_tenant = random.choice(self.__tenants_in)
+                    self.__tenants_in.remove(random_tenant)
                     Logger.info(self, f'Tenant "{random_tenant["name"]}" is leaving the condominium: ')
 
-                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION * 2)
+                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION * 4)
             else:
                 yield self.__environment.timeout(1)
 
