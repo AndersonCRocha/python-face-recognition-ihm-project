@@ -142,7 +142,7 @@ class Condominium:
 
                 yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION * 4)
             else:
-                yield self.__environment.timeout(1)
+                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __get_all_registered_people(self, include_tenants=True, include_visitors=True):
         people = []
