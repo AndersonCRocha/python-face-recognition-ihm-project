@@ -70,7 +70,8 @@ class Condominium:
         while True:
             person = self.recognize_person()
 
-            if person not in self.__waiting_tenants \
+            if person is not None \
+                    and person not in self.__waiting_tenants \
                     and person not in self.__waiting_visitors\
                     and person not in self.__tenants_in \
                     and person not in self.__visitors_in:
@@ -152,13 +153,13 @@ class Condominium:
                     self.__visitors_in.remove(random_visitor)
                     Logger.info(self, f'Visitor "{random_visitor["name"]}" is leaving the condominium: ')
                 elif len(self.__tenants_in) > 0:
-                    random_tenant = random.choice(self.__visitors_in)
-                    self.__visitors_in.remove(random_tenant)
+                    random_tenant = random.choice(self.__tenants_in)
+                    self.__tenants_in.remove(random_tenant)
                     Logger.info(self, f'Tenant "{random_tenant["name"]}" is leaving the condominium: ')
 
-                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION * 2)
+                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION * 4)
             else:
-                yield self.__environment.timeout(1)
+                yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
     def __get_all_registered_people(self, include_tenants=True, include_visitors=True):
         people = []

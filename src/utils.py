@@ -17,9 +17,9 @@ PEOPLE = [
     "paul-02.jpg",
 
     # Visitor
-    "grace-01.jpg",
-    "grace-02.jpg",
-    "grace-03.jpg",
+    "grace-01.jpeg",
+    "grace-02.jpeg",
+    "grace-03.jpeg",
 
     # Tenant
     "mary-01.jpg",
@@ -27,9 +27,9 @@ PEOPLE = [
     "mary-03.jpg",
 
     # Visitor
-    "phillip-01.jpg",
-    "phillip-02.jpg",
-    "phillip-03.jpg",
+    "phillip-01.jpeg",
+    "phillip-02.jpeg",
+    "phillip-03.jpeg",
 
     # Visitor
     "jane-01.jfif",
