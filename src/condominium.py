@@ -121,7 +121,7 @@ class Condominium:
         for tenant in self.__waiting_tenants:
             Logger.info(self, f'Tenant "{tenant["name"]}" is allowed in.')
             self.__tenants_in.append(tenant)
-            self.__waiting_tenants.remove(tenant)
+            self.__waiting_tenants = list(filter(lambda x: x['id'] != tenant['id'], self.__waiting_tenants))
 
         return self.__waiting_tenants, self.__tenants_in
 
