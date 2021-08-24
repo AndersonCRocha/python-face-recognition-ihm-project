@@ -28,6 +28,15 @@ class Condominium:
     def get_recognized_people(self):
         return self.__recognized_people
 
+    def get_tenants(self):
+        return self.__waiting_tenants
+
+    def get_visitors(self):
+        return self.__waiting_visitors
+
+    def add_recognized_person(self, person):
+        self.__recognized_people.append(person)
+
     def __load_settings(self):
         Logger.info(self, f'Reading settings file in: {SETTINGS_FILE_PATH}.')
         with open(SETTINGS_FILE_PATH, 'r') as settings_file:
@@ -36,7 +45,7 @@ class Condominium:
 
     def __prepare_environment(self):
         self.__environment.add_process('recognize_person()', self.__recognize_person_process())
-        self.__environment.add_process('classify_list()', self.__classify_recognized_people())
+        self.__environment.add_process('classify_list()', self.__classify_recognized_people_process())
         self.__environment.add_process('unlock_to_tenants()', self.__unlock_to_tenants())
         self.__environment.add_process('unlock_to_visitors()', self.__unlock_to_visitors())
         self.__environment.add_process('people_leaves()', self.__people_leaves())
@@ -84,21 +93,26 @@ class Condominium:
 
                 yield self.__environment.timeout(TIME_BETWEEN_PROCESSES_EXECUTION)
 
-    def __classify_recognized_people(self):
+    def classify_recognized_people(self):
         all_registered_tenants = self.__get_all_registered_people(include_visitors=False)
 
+        for person in self.__recognized_people:
+            if person in all_registered_tenants:
+                Logger.info(self, f'{person["name"]} is a tenant.')
+                self.__waiting_tenants.append(person)
+            else:
+                Logger.info(self, f'{person["name"]} is a visitor.')
+                self.__waiting_visitors.append(person)
+
+            self.__recognized_people.remove(person)
+
+        return self.__waiting_tenants, self.__waiting_visitors
+
+    def __classify_recognized_people_process(self):
         while True:
             number_of_recognized_people = len(self.__recognized_people)
 
-            for person in self.__recognized_people:
-                if person in all_registered_tenants:
-                    Logger.info(self, f'{person["name"]} is a tenant.')
-                    self.__waiting_tenants.append(person)
-                else:
-                    Logger.info(self, f'{person["name"]} is a visitor.')
-                    self.__waiting_visitors.append(person)
-
-                self.__recognized_people.remove(person)
+            self.classify_recognized_people()
 
             timeout = TIME_BETWEEN_PROCESSES_EXECUTION \
                 if number_of_recognized_people == 0 \
