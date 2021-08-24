@@ -25,17 +25,14 @@ class Condominium:
     def get_settings(self):
         return self.__settings
 
-    def get_recognized_people(self):
-        return self.__recognized_people
-
-    def get_tenants(self):
-        return self.__waiting_tenants
-
-    def get_visitors(self):
-        return self.__waiting_visitors
-
     def add_recognized_person(self, person):
         self.__recognized_people.append(person)
+
+    def add_waiting_tenant(self, tenant):
+        self.__waiting_tenants.append(tenant)
+
+    def add_waiting_visitor(self, visitor):
+        self.__waiting_visitors.append(visitor)
 
     def __load_settings(self):
         Logger.info(self, f'Reading settings file in: {SETTINGS_FILE_PATH}.')
@@ -46,8 +43,8 @@ class Condominium:
     def __prepare_environment(self):
         self.__environment.add_process('recognize_person()', self.__recognize_person_process())
         self.__environment.add_process('classify_list()', self.__classify_recognized_people_process())
-        self.__environment.add_process('unlock_to_tenants()', self.__unlock_to_tenants())
-        self.__environment.add_process('unlock_to_visitors()', self.__unlock_to_visitors())
+        self.__environment.add_process('unlock_to_tenants()', self.__unlock_to_tenants_process())
+        self.__environment.add_process('unlock_to_visitors()', self.__unlock_to_visitors_process())
         self.__environment.add_process('people_leaves()', self.__people_leaves())
 
     def recognize_person(self, encoded_photo=None):
@@ -120,14 +117,19 @@ class Condominium:
 
             yield self.__environment.timeout(timeout)
 
-    def __unlock_to_tenants(self):
+    def unlock_to_tenants(self):
+        for tenant in self.__waiting_tenants:
+            Logger.info(self, f'Tenant "{tenant["name"]}" is allowed in.')
+            self.__tenants_in.append(tenant)
+            self.__waiting_tenants.remove(tenant)
+
+        return self.__waiting_tenants, self.__tenants_in
+
+    def __unlock_to_tenants_process(self):
         while True:
             number_of_waiting_tenants = len(self.__waiting_tenants)
 
-            for tenant in self.__waiting_tenants:
-                Logger.info(self, f'Tenant "{tenant["name"]}" is allowed in.')
-                self.__tenants_in.append(tenant)
-                self.__waiting_tenants.remove(tenant)
+            self.unlock_to_tenants()
 
             timeout = TIME_BETWEEN_PROCESSES_EXECUTION \
                 if number_of_waiting_tenants == 0 \
@@ -135,21 +137,25 @@ class Condominium:
 
             yield self.__environment.timeout(timeout)
 
-    def __unlock_to_visitors(self):
+    def unlock_to_visitors(self):
         all_registered_tenants = self.__get_all_registered_people(include_visitors=False)
 
+        for visitor in self.__waiting_visitors:
+            for tenant in all_registered_tenants:
+                if visitor in tenant['visitors']:
+                    Logger.info(self, f'Calling visitor notification service for tenant "{tenant["name"]}".')
+                    self.__visitors_in.append(visitor)
+                    self.__waiting_visitors.remove(visitor)
+                    Logger.info(self, f'Visitor "{visitor["name"]}" is allowed in.')
+                    break
+
+        return self.__waiting_visitors, self.__visitors_in
+
+    def __unlock_to_visitors_process(self):
         while True:
             number_of_waiting_visitors = len(self.__waiting_visitors)
 
-            for visitor in self.__waiting_visitors:
-                for tenant in all_registered_tenants:
-                    if visitor in tenant['visitors']:
-                        Logger.info(self, f'Calling visitor notification service for tenant "{tenant["name"]}".')
-                        break
-
-                self.__visitors_in.append(visitor)
-                self.__waiting_visitors.remove(visitor)
-                Logger.info(self, f'Visitor "{visitor["name"]}" is allowed in.')
+            self.unlock_to_visitors()
 
             timeout = TIME_BETWEEN_PROCESSES_EXECUTION \
                 if number_of_waiting_visitors == 0 \
