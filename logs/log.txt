@@ -1,0 +1,650 @@
+[24-08-2021 20:32:23] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:32:23] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:32:23] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:32:23] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:32:23] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:32:23] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:32:23] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:32:23] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:32:34] - Class: Condominium - Jane is a visitor.
+[24-08-2021 20:32:34] - Class: Condominium - Calling visitor notification service for tenant "Mary".
+[24-08-2021 20:32:34] - Class: Condominium - Visitor "Jane" is allowed in.
+[24-08-2021 20:33:03] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:33:03] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:33:03] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:33:03] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:33:03] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:33:03] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:33:03] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:33:03] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:33:11] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:33:11] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:33:11] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:33:11] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:33:11] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:33:11] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:33:11] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:33:11] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:36:32] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:36:32] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:36:32] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:36:32] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:36:32] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:36:32] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:36:32] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:36:32] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:36:41] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:36:41] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:36:41] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:36:41] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:36:41] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:36:41] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:36:41] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:36:41] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:38:01] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:38:01] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:38:01] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:38:01] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:38:01] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:38:01] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:38:01] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:38:01] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:38:10] - Class: Condominium - Mary is a tenant.
+[24-08-2021 20:38:10] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:38:10] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:38:10] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:38:10] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:38:10] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:38:10] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:38:10] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:38:10] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:38:21] - Class: Condominium - Jane is a visitor.
+[24-08-2021 20:39:57] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:39:57] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:39:57] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:39:57] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:39:57] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:39:57] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:39:57] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:39:57] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:40:05] - Class: Condominium - Mary is a tenant.
+[24-08-2021 20:40:05] - Class: Condominium - Tenant "Mary" is allowed in.
+[24-08-2021 20:40:05] - Class: Condominium - Tenant "Mary" is allowed in.
+[24-08-2021 20:41:06] - Class: Condominium - Initializing condominium instance.
+[24-08-2021 20:41:06] - Class: Condominium - Reading settings file in: C:\Users\Anderson Rocha\Desktop\Anderson\Projetos\Python\condominio-inteligente\resources\settings.json.
+[24-08-2021 20:41:06] - Class: Condominium - Settings: {
+  "version": 0.1,
+  "author": "Anderson Rocha",
+  "tenants": [
+    {
+      "id": 1,
+      "name": "John",
+      "photos": [
+        "john-01.jpg",
+        "john-02.jpg",
+        "john-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 4,
+          "name": "Paul",
+          "photos": [
+            "paul-01.jpg",
+            "paul-02.jpg"
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Grace",
+          "photos": [
+            "grace-01.jpeg",
+            "grace-02.jpeg",
+            "grace-03.jpeg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mary",
+      "photos": [
+        "mary-01.jpg",
+        "mary-02.jpg",
+        "mary-03.jpg"
+      ],
+      "visitors": [
+        {
+          "id": 7,
+          "name": "Jane",
+          "photos": [
+            "jane-01.jfif",
+            "jane-02.jpg",
+            "jane-03.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Joseph",
+      "photos": [
+        "joseph-01.jpg",
+        "joseph-02.jpg",
+        "joseph-03.jpg"
+      ],
+      "visitors": []
+    }
+  ]
+}
+[24-08-2021 20:41:06] - Class: Environment - Adding process: recognize_person()
+[24-08-2021 20:41:06] - Class: Environment - Adding process: classify_list()
+[24-08-2021 20:41:06] - Class: Environment - Adding process: unlock_to_tenants()
+[24-08-2021 20:41:06] - Class: Environment - Adding process: unlock_to_visitors()
+[24-08-2021 20:41:06] - Class: Environment - Adding process: people_leaves()
+[24-08-2021 20:41:17] - Class: Condominium - Jane is a visitor.
+[24-08-2021 20:41:17] - Class: Condominium - Calling visitor notification service for tenant "Mary".
+[24-08-2021 20:41:17] - Class: Condominium - Visitor "Jane" is allowed in.
